@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var htto = require('http').server(app);
+var htto = require('http').Server(app);
 //usando socketio
 var io= require('socket.io')(http);
 
