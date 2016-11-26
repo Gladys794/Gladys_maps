@@ -8,6 +8,11 @@
     var array_puntos = JSON.parse(localStorage.string_array_puntos);
    //escuchando al evento click  del boton inicializar
   	//$("#btnInicializar").on('click', alert('llamada'));
+
+
+
+var socket=io.connect('https://maps2016.herokuapp.com/');
+
 var app={
       geolocalizar:function (){
         GMaps.geolocate({
@@ -78,20 +83,29 @@ var app={
       },
 
       cargarMapa:function(){
-		alert('llama pinta_rutas');
 		localStorage.string_array_puntos = '[]';
         array_puntos = JSON.parse(localStorage.string_array_puntos);
         app.geolocalizar();
       },
 
 
+      listenSocket:function(){
+            socket.on('Usuario conectado',function(contador){
+                  $('#divContador'.html(contador));//cargando datos en el div
+
+          });
+
+      },
+
     inicializar: function() {
 		"use strict";
 		var self=this;
         self.cargarMapa(); //llamando metodo que carga el mapa
+        self.listenSocket();//activando el socket
 	}
 
 };
 
 app.inicializar(); //inicializando objeto al cargar la pagina
    
+
