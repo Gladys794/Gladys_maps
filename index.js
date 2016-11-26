@@ -26,8 +26,8 @@ io.on('conexion', function(socket){
     io.sockets.emit('usuario conectado', socketCount);
 });//cierra conexion
 
-socket.on('disconnect',function(){
+/*socket.on('disconnect',function(){
 	socketCount--;//decremento del contador
 	console.log('Usuario desconectado');//mensaje en consola
 	io.sockets.emit('Usuario desconectado');//mensaje a todos los usuarios
-});
+});*\
